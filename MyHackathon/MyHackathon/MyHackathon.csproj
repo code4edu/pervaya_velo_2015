@@ -177,6 +177,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\api\AuthenticationController.cs" />
     <Compile Include="Controllers\api\DocumentsController.cs" />
+    <Compile Include="Controllers\api\FilesController.cs" />
     <Compile Include="Controllers\api\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
