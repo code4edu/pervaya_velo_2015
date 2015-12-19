@@ -1,4 +1,5 @@
-﻿using MyHackathon.Models.ClientModels;
+﻿using MyHackathon.Models;
+using MyHackathon.Models.ClientModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,9 @@ namespace MyHackathon.Controllers.api
 			if (LoginModel.CanLogin(model.Email, model.Password))
 			{
 				FormsAuthentication.SetAuthCookie(model.Email, createPersistentCookie: true);
-				return Json(new { isLogged = true });
+				MyRoleProvider provider = new MyRoleProvider();
+				var roles = provider.GetRolesForUser(model.Email);
+				return Json(new { isLogged = true, roles = roles });
 			}
 
 			return StatusCode(HttpStatusCode.Forbidden);
