@@ -1,7 +1,9 @@
 ﻿/// <reference path="../angular.js" />
 /// <reference path="../angular/angular-ui-router.js" />
+var fileId = 0;
+
 var App = angular
-    .module('App', ['ngAnimate', 'ui.router', 'anim-in-out']);
+    .module('App', ['ngAnimate', 'ui.router', 'anim-in-out', 'ngFileUpload']);
 
 App
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -35,6 +37,11 @@ App
           	url: "/users",
           	templateUrl: "/Home/Users",
           	controller: 'usersCtrl'
+          })
+          .state('addDoc', {
+          	url: "/addDoc",
+          	templateUrl: "/Home/AddDoc",
+          	controller: 'addDocCtrl'
           });
     });
 
@@ -189,4 +196,36 @@ App.controller('MainCtrl', function ($scope, $state, $rootScope, $http) {
 			$state.go('home');
 		});
 	}
+});
+
+App.controller('addDocCtrl', function ($scope, $http, Upload) {
+	$scope.submit = function () {
+		if ($scope.file) {
+			$scope.upload($scope.file);
+		}
+	};
+
+
+	// upload on file select or drop
+	$scope.upload = function (file) {
+		Upload.upload({
+			url: '/api/Files',
+			data: { file: file, 'name': ''+fileId++ }
+		}).then(function (resp) {
+			console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+		}, function (resp) {
+			console.log('Error status: ' + resp.status);
+		}, function (evt) {
+			var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+			console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+		});
+	};
+
+
+	$scope.$watch('file', function (newVal) {
+		if (!newVal) {
+			return;
+		}
+		$scope.upload($scope.file);
+	});
 });

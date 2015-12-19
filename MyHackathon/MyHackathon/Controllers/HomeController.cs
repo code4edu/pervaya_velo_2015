@@ -45,5 +45,9 @@ namespace MyHackathon.Controllers
 		{
 			return PartialView();
 		}
+		public ActionResult AddDoc()
+		{
+			return PartialView();
+		}
 	}
 }

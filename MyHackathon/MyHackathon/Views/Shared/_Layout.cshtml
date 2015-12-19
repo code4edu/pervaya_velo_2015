@@ -29,6 +29,9 @@
 					<li ui-sref-active="active" ng-show="role === 'Admin'">
 						<a ui-sref="users" class="cp">Пользователи</a>
 					</li>
+					<li ui-sref-active="active" ng-show="role !== ''">
+						<a ui-sref="addDoc" class="cp">Добавить документ</a>
+					</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
