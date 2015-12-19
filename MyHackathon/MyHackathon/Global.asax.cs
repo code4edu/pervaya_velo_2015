@@ -36,7 +36,7 @@ namespace MyHackathon
 				{
 					return;
 				}
-				db.Users.Add(new Models.ClientModels.User() { Mail = mail, Password = password, Role = Roles.Admin & Roles.Professor & Roles.Student });
+				db.Users.Add(new Models.ClientModels.User() { Mail = mail, Password = password, Role = Roles.Admin });
 				db.SaveChanges();
 			}
 		}
