@@ -96,7 +96,8 @@ App.controller('homeCtrl', function ($scope) {
 });
 
 
-App.controller('signupCtrl', function ($scope) {
+App.controller('signupCtrl', function ($scope, $state, $http) {
+	var login;
 	$scope.login = '';
 	$scope.password1 = '';
 	$scope.password2 = '';
@@ -106,8 +107,17 @@ App.controller('signupCtrl', function ($scope) {
 			$scope.passwordErr = true;
 			return;
 		}
-
+		login = $scope.login;
 		$scope.passwordErr = false;
+		$http.post('/api/Users', {
+			Mail: $scope.login,
+			Password: $scope.password1,
+			Role: 'Student'
+		}).then(function (response) {
+			$rootScope.role = response.data.roles;
+			$rootScope.userName = login;
+			$state.go('home');
+		});
 	};
 });
 
