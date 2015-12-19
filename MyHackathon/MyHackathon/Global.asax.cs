@@ -22,6 +22,8 @@ namespace MyHackathon
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 			Database.SetInitializer(new CreateDatabaseIfNotExists<DBMapper>());
+
+			CreateDefaultAdmin();
 		}
 
 		public void CreateDefaultAdmin()
@@ -34,7 +36,8 @@ namespace MyHackathon
 				{
 					return;
 				}
-				db.Users.Add(new Models.ClientModels.User() { Mail = mail, Password = password, Role = Roles.Admin & Roles.Professor & Roles.Student }); 
+				db.Users.Add(new Models.ClientModels.User() { Mail = mail, Password = password, Role = Roles.Admin & Roles.Professor & Roles.Student });
+				db.SaveChanges();
 			}
 		}
 	}
