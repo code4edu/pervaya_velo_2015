@@ -1,6 +1,4 @@
-﻿using MyHackathon.Models;
-using MyHackathon.Models.ClientModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,6 +24,17 @@ namespace MyHackathon.Controllers
 		{
 			ViewBag.Message = "Your contact page.";
 
+			return View();
+		}
+
+		public ActionResult Home()
+		{
+			return View();
+		}
+
+
+		public ActionResult Login()
+		{
 			return View();
 		}
 	}
