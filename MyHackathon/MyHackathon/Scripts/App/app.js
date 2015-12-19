@@ -38,29 +38,35 @@ App
           });
     });
 
-App.run(function ($rootScope) {
+App.run(function ($rootScope, $state) {
 	var adminPages = ['users'];
 	$rootScope.role = '';
+	$rootScope.userName = '';
 
 
 
 	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 		if (_.contains(adminPages, toState.name) && $rootScope.role !== 'Admin') {
 			event.preventDefault();
+			$state.go('home');
 		}
 	});
 });
 
-App.controller('loginCtrl', function ($scope, $http) {
+App.controller('loginCtrl', function ($scope, $http, $rootScope, $state) {
 	$scope.login = '';
 	$scope.password = '';
 
 	$scope.submit = function () {
+		var login = $scope.login;
 		$http.post('/api/Authentication', {
 			Email: $scope.login,
 			Password: $scope.password
 		}).then(function (response) {
 			console.log(response);
+			$rootScope.role = response.data.roles;
+			$rootScope.userName = login;
+			$state.go('home');
 		},
 		function (error) {
 			console.log(error);
@@ -158,6 +164,19 @@ App.directive('accordion', function (pageOrder) {
 	};
 });
 
-App.controller('usersCtrl', function ($scope) {
+App.controller('usersCtrl', function ($scope, $http) {
+	$scope.usersList = [];
 
+	$http.get('/api/Users').then(function (response) {
+		$scope.usersList = response.data;
+	});
+});
+
+App.controller('MainCtrl', function ($scope, $state, $rootScope, $http) {
+	$scope.logout = function () {
+		$http.delete('/api/Authentication').then(function () {
+			$rootScope.role = '';
+			$state.go('home');
+		});
+	}
 });

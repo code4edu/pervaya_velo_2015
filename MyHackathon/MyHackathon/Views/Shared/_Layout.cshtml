@@ -7,7 +7,7 @@
     @Styles.Render("~/css")
 
 </head>
-<body>
+<body ng-controller="MainCtrl">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,8 +23,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li ui-sref-active="active">
+					<li ui-sref-active="active">
 						<a ui-sref="about" class="cp">О нас</a>
+					</li>
+					<li ui-sref-active="active" ng-show="role === 'Admin'">
+						<a ui-sref="users" class="cp">Пользователи</a>
 					</li>
                 </ul>
                 @Html.Partial("_LoginPartial")

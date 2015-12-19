@@ -21,7 +21,14 @@ else
     </ul>
 }*@
 
-<ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right" ng-if="role !== ''">
+	<li>
+		<a>Привет, {{userName}}!</a>
+	</li>
+	<li><a ng-click="logout()" class="cp">Log off</a></li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right" ng-if="role === ''">
 	<li  class="pr"  ui-sref-active="active">
 		<a ui-sref="signup" class="cp">Регистрация</a>		
 	</li>

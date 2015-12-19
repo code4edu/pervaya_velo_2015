@@ -19,7 +19,7 @@ namespace MyHackathon.Controllers.api
 		private DBMapper db = new DBMapper();
 
 		// GET: api/Users
-		[Authorize(Roles ="Admin")]
+		//[Authorize(Roles ="Admin")]
 		public IQueryable<User> GetUsers()
 		{
 			return db.Users;
