@@ -22,6 +22,8 @@ namespace MyHackathon
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 			Database.SetInitializer(new CreateDatabaseIfNotExists<DBMapper>());
+
+			CreateDefaultAdmin();
 		}
 
 		public void CreateDefaultAdmin()
