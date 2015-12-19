@@ -184,6 +184,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ClientModels\Document.cs" />
+    <Compile Include="Models\ClientModels\DocumentTypes.cs" />
+    <Compile Include="Models\ClientModels\File.cs" />
+    <Compile Include="Models\ClientModels\Roles.cs" />
+    <Compile Include="Models\ClientModels\User.cs" />
+    <Compile Include="Models\ClientModels\DBMapper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,6 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
