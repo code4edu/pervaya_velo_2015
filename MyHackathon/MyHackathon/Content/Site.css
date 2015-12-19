@@ -1,32 +1,35 @@
 ﻿html {
 	height: 100%;
+	color: #fff !important;
+	background: black;
 }
 
 body {
 	height: 100%;
-
-    padding-top: 50px;
-    padding-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	background: rgba(52, 52, 52, 0.18);
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	    overflow: hidden;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 
 .container {
@@ -35,9 +38,9 @@ textarea {
 	position: relative;
 }
 
-.container > * {
-	white-space: normal;
-}
+	.container > * {
+		white-space: normal;
+	}
 
 .st1 {
 	width: 160px !important;
@@ -45,4 +48,156 @@ textarea {
 
 .cp {
 	cursor: pointer;
+}
+
+ui-view {
+	/*transition: all 5s linear;*/
+	width: 100% !important;
+	background: #fff;
+}
+
+.center-to-left {
+	position: absolute;
+	z-index: 999;
+	animation: centerToLeft 0.5s linear;
+	width: 100%;
+	height: 100%;
+}
+
+.left-to-center {
+	position: absolute;
+	z-index: 999;
+	animation: leftToCenter 0.5s linear;
+	width: 100%;
+	height: 100%;
+}
+
+.center-to-right {
+	position: absolute;
+	z-index: 999;
+	animation: centerToRight 0.5s linear;
+	width: 100%;
+	height: 100%;
+}
+
+.right-to-center {
+	position: absolute;
+	z-index: 999;
+	animation: rightToCenter 0.5s linear;
+	width: 100%;
+	height: 100%;
+}
+
+@keyframes centerToLeft {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes leftToCenter {
+	0% {
+		transform: translateX(-100%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes centerToRight {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes rightToCenter {
+	0% {
+		transform: translateX(100%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.b-white {
+	background: #fff;
+	width: 100%;
+	height: 100%;
+}
+
+.has-error {
+	font-size: 24px;
+	color: #f00;
+	margin: 15px 0;
+}
+
+.active ::after {
+	content: " ";
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+	bottom: 5px;
+	border-bottom: 2px solid orange;
+	left: 0;
+}
+
+a {
+	position: relative;
+}
+
+.pr {
+	position: relative;
+}
+
+.b-image {
+	position: relative;
+	color: #fff;
+	width: 100%;
+	height: 100%;
+}
+
+	.b-image::before {
+		content: "";
+		background: #000;
+		opacity: 0.68;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: 15;
+	}
+
+	.b-image::after {
+		content: "";
+		background: url(background.jpg) no-repeat;
+		background-size: cover;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: 10;
+	}
+
+.h100 {
+	height: 100%;
+}
+
+.p-content {
+	position: relative;
+	z-index: 100;
+}
+
+table, h1, h2, h3, h4, h5 {
+	background-color: rgba(24, 24, 24, 0.5) !important;
 }

@@ -2,20 +2,31 @@
 @{
     ViewBag.Title = "Login";
 }
+<div class="b-image">
+	<div class="p-content h100">
+		<h2>Вход в систему</h2>
+		<form novalidate name="Login" ng-submit="submit()">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email адрес</label>
+				<input type="email"
+					   id="exampleInputEmail1"
+					   class="form-control"
+					   required
+					   ng-model="login"
+					   placeholder="Введите Email адрес">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Пароль</label>
+				<input type="password"
+					   id="exampleInputPassword1"
+					   class="form-control"
+					   required
+					   ng-model="password"
+					   placeholder="Введите пароль">
+			</div>
+			<button type="submit" class="btn btn-default" ng-click="submit()">Войти!</button>
+		</form>
 
-<h2>Вход в систему</h2>
-<form>
-	<div class="form-group">
-		<label for="exampleInputEmail1">Email адрес</label>
-		<input type="email" 
-			   class="form-control" 
-			   placeholder="Введите Email адрес">
 	</div>
-	<div class="form-group">
-		<label for="exampleInputPassword1">Пароль</label>
-		<input type="password" 
-			   class="form-control" 
-			   placeholder="Введите пароль">
-	</div>
-	<button type="submit" class="btn btn-default">Войти!</button>
-</form>
+	
+</div>

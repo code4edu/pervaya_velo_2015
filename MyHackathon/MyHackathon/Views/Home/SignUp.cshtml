@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<div class="b-image">
+	<div class="p-content h100">
+		<h2>Регистрация</h2>
+		<form novalidate name="SignUp" ng-submit="submit()">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email адрес</label>
+				<input type="email"
+					   id="exampleInputEmail1"
+					   class="form-control"
+					   ng-model="login"
+					   required
+					   placeholder="Введите Email адрес">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Пароль</label>
+				<input type="password"
+					   id="exampleInputPassword1"
+					   class="form-control"
+					   ng-model="password1"
+					   required
+					   placeholder="Введите пароль">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword2">Повторите пароль</label>
+				<input type="password"
+					   id="exampleInputPassword2"
+					   class="form-control"
+					   ng-model="password2"
+					   required
+					   placeholder="Введите пароль еще раз">
+			</div>
+			<div ng-show="passwordErr"
+				 class="has-error">
+				Ошибка! Пароли должны совпадать!
+			</div>
+			<button type="submit" class="btn btn-default" ng-click="submit()">Зарегистрироваться!</button>
+		</form>
+	</div>
+	
+</div>
+
