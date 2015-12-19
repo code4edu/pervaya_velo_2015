@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using MyHackathon.Models.ClientModels;
 using System.Web.Security;
+using MyHackathon.Models;
 
 namespace MyHackathon.Controllers.api
 {
@@ -22,12 +23,13 @@ namespace MyHackathon.Controllers.api
 		//[Authorize(Roles ="Admin")]
 		public IQueryable<User> GetUsers()
 		{
+			var a = User.Identity.Name;
 			return db.Users;
 		}
 
 		// GET: api/Users/5
 		[ResponseType(typeof(User))]
-		[Authorize(Roles = "Admin")]
+		//[Authorize(Roles = "Admin")]
 		public async Task<IHttpActionResult> GetUser(int id)
 		{
 			User user = await db.Users.FindAsync(id);
@@ -41,7 +43,7 @@ namespace MyHackathon.Controllers.api
 
 		// PUT: api/Users/5
 		[ResponseType(typeof(void))]
-		[Authorize(Roles = "Admin")]
+		//[Authorize(Roles = "Admin")]
 		public async Task<IHttpActionResult> PutUser(int id, User user)
 		{
 			if (!ModelState.IsValid)
@@ -87,13 +89,14 @@ namespace MyHackathon.Controllers.api
 			db.Users.Add(user);
 			await db.SaveChangesAsync();
 			FormsAuthentication.SetAuthCookie(user.Mail, createPersistentCookie: true);
-
-			return CreatedAtRoute("api/User", new { id = user.Id }, user);
+			MyRoleProvider provider = new MyRoleProvider();
+			var roles = provider.GetRolesForUser(user.Mail)?[0];
+			return Json(new { roles });
 		}
 
 		// DELETE: api/Users/5
 		[ResponseType(typeof(User))]
-		[Authorize(Roles = "Admin")]
+		//[Authorize(Roles = "Admin")]
 		public async Task<IHttpActionResult> DeleteUser(int id)
 		{
 			User user = await db.Users.FindAsync(id);
