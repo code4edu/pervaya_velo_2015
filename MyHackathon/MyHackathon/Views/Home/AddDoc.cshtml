@@ -4,12 +4,11 @@
 }
 
 <div class="b-image">
-	<div class="p-content h100">
+	<form class="p-content h100" enctype="multipart/form-data">
 		<h2>Добавить работу</h2>
 		
-		<div class="btn btn-primary cp" ngf-select ng-model="file" ngf-multiple="false">Выбрать файл</div>
-
-	</div>
+		<div class="btn btn-primary cp" ngf-drop ngf-select="" ng-model="file">Выбрать файл</div>
+	</form>
 
 </div>
 

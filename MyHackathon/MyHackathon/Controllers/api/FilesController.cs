@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using MyHackathon.Models.ClientModels;
 using System.Net.Http.Headers;
+using System.Web;
 
 namespace MyHackathon.Controllers.api
 {
@@ -79,8 +80,11 @@ namespace MyHackathon.Controllers.api
 
 		// POST: api/Files
 		[ResponseType(typeof(File))]
-		public async Task<IHttpActionResult> PostFile(File file)
+		public async Task<IHttpActionResult> PostFile(HttpPostedFileBase data)
 		{
+			var buffer = new byte[data.ContentLength];
+			data.InputStream.Write(buffer, 0, data.ContentLength);
+			var file = new File() { Name = data.FileName, Data = buffer};
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);

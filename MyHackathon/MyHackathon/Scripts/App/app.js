@@ -209,7 +209,7 @@ App.controller('addDocCtrl', function ($scope, $http, Upload) {
 	// upload on file select or drop
 	$scope.upload = function (file) {
 		Upload.upload({
-			url: '/api/Files',
+			url: 'api/Files',
 			data: { file: file, 'name': ''+fileId++ }
 		}).then(function (resp) {
 			console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
