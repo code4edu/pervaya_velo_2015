@@ -190,6 +190,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\anim-in-out.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -199,6 +200,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular_libs\angular-animate.js" />
     <Content Include="Scripts\angular_libs\angular-ui-router.js" />
+    <Content Include="Scripts\angular_libs\anim-in-out.js" />
     <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -250,6 +252,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

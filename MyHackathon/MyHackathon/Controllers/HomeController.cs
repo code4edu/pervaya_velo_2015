@@ -15,9 +15,7 @@ namespace MyHackathon.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return PartialView();
         }
 
         public ActionResult Contact()
@@ -29,13 +27,18 @@ namespace MyHackathon.Controllers
 
 		public ActionResult Home()
 		{
-			return View();
+			return PartialView();
 		}
 
 
 		public ActionResult Login()
 		{
-			return View();
+			return PartialView();
+		}
+
+		public ActionResult SignUp()
+		{
+			return PartialView();
 		}
 	}
 }
