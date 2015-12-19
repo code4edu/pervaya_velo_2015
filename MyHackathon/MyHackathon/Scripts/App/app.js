@@ -29,8 +29,22 @@ App
           	url: "/signup",
           	templateUrl: "/Home/SignUp",
           	controller: 'signupCtrl'
+          })
+
+          .state('users', {
+          	url: "/users",
+          	templateUrl: "/Home/Users",
+          	controller: 'usersCtrl'
           });
     });
+
+App.run(function ($rootScope) {
+	$rootScope.role = '';
+
+	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+		
+	});
+});
 
 App.controller('loginCtrl', function ($scope, $http) {
 	$scope.login = '';
@@ -103,7 +117,7 @@ App.directive('accordion', function (pageOrder) {
 					toPage = angular.element(pages[0]),
 					directionClasses = directionOfMoving(fromState.name, toState.name);
 
-				//fromPage.addClass(directionClasses[0]);
+				fromPage.addClass(directionClasses[0]);
 				toPage.addClass(directionClasses[1]);
 
 				scope.$on('animEnd', function () {
@@ -137,4 +151,8 @@ App.directive('accordion', function (pageOrder) {
 			});
 		}
 	};
+});
+
+App.controller('usersCtrl', function ($scope) {
+
 });

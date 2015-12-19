@@ -54,11 +54,13 @@ ui-view {
 	/*transition: all 5s linear;*/
 	width: 100% !important;
 	background: #fff;
+	position: absolute;
+	z-index: 999;
 }
 
 .center-to-left {
 	position: absolute;
-	z-index: 999;
+	z-index: 9;
 	animation: centerToLeft 0.5s linear;
 	width: 100%;
 	height: 100%;
@@ -74,7 +76,7 @@ ui-view {
 
 .center-to-right {
 	position: absolute;
-	z-index: 999;
+	z-index: 9;
 	animation: centerToRight 0.5s linear;
 	width: 100%;
 	height: 100%;

@@ -40,5 +40,10 @@ namespace MyHackathon.Controllers
 		{
 			return PartialView();
 		}
+
+		public ActionResult Users()
+		{
+			return PartialView();
+		}
 	}
 }
