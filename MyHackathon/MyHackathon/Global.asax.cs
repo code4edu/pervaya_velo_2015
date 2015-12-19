@@ -23,5 +23,19 @@ namespace MyHackathon
 
 			Database.SetInitializer(new CreateDatabaseIfNotExists<DBMapper>());
 		}
+
+		public void CreateDefaultAdmin()
+		{
+			using (var db = new DBMapper())
+			{
+				var mail = "Admin@admin.ru";
+				var password = "123456";
+				if (db.Users.FirstOrDefault(l => l.Mail == mail) != null)
+				{
+					return;
+				}
+				db.Users.Add(new Models.ClientModels.User() { Mail = mail, Password = password, Role = Roles.Admin & Roles.Professor & Roles.Student }); 
+			}
+		}
 	}
 }
