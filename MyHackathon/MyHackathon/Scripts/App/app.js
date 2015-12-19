@@ -39,10 +39,15 @@ App
     });
 
 App.run(function ($rootScope) {
+	var adminPages = ['users'];
 	$rootScope.role = '';
 
+
+
 	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-		
+		if (_.contains(adminPages, toState.name) && $rootScope.role !== 'Admin') {
+			event.preventDefault();
+		}
 	});
 });
 
