@@ -81,6 +81,8 @@ namespace MyHackathon.Controllers.api
 				return BadRequest(ModelState);
 			}
 
+			document.AuthorId = 1;
+			document.Type = DocumentTypes.CourseWork;
 			db.Documents.Add(document);
 			await db.SaveChangesAsync();
 
