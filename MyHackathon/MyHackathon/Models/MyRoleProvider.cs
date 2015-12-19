@@ -16,7 +16,7 @@ namespace MyHackathon.Models
 			{
 				var user = db.Users.FirstOrDefault(l => l.Mail == mail);
 				if (user != null)
-				{
+				 {
 					var list = new List<string>();
 					if (user.Role == ClientModels.Roles.Admin)
 					{

@@ -23,7 +23,7 @@ namespace MyHackathon.Controllers.api
 			{
 				FormsAuthentication.SetAuthCookie(model.Email, createPersistentCookie: true);
 				MyRoleProvider provider = new MyRoleProvider();
-				var roles = provider.GetRolesForUser(model.Email);
+				var roles = provider.GetRolesForUser(model.Email)?[0];
 				return Json(new { isLogged = true, roles = roles });
 			}
 
