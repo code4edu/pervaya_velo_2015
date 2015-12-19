@@ -19,6 +19,7 @@ namespace MyHackathon.Controllers.api
 		private DBMapper db = new DBMapper();
 
 		// GET: api/Users
+		[Authorize(Roles ="Admin")]
 		public IQueryable<User> GetUsers()
 		{
 			return db.Users;
@@ -26,6 +27,7 @@ namespace MyHackathon.Controllers.api
 
 		// GET: api/Users/5
 		[ResponseType(typeof(User))]
+		[Authorize(Roles = "Admin")]
 		public async Task<IHttpActionResult> GetUser(int id)
 		{
 			User user = await db.Users.FindAsync(id);
@@ -39,6 +41,7 @@ namespace MyHackathon.Controllers.api
 
 		// PUT: api/Users/5
 		[ResponseType(typeof(void))]
+		[Authorize(Roles = "Admin")]
 		public async Task<IHttpActionResult> PutUser(int id, User user)
 		{
 			if (!ModelState.IsValid)
@@ -85,11 +88,12 @@ namespace MyHackathon.Controllers.api
 			await db.SaveChangesAsync();
 			FormsAuthentication.SetAuthCookie(user.Mail, createPersistentCookie: true);
 
-			return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+			return CreatedAtRoute("api/User", new { id = user.Id }, user);
 		}
 
 		// DELETE: api/Users/5
 		[ResponseType(typeof(User))]
+		[Authorize(Roles = "Admin")]
 		public async Task<IHttpActionResult> DeleteUser(int id)
 		{
 			User user = await db.Users.FindAsync(id);
