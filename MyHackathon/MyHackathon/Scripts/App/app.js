@@ -32,12 +32,21 @@ App
           });
     });
 
-App.controller('loginCtrl', function ($scope) {
+App.controller('loginCtrl', function ($scope, $http) {
 	$scope.login = '';
 	$scope.password = '';
 
 	$scope.submit = function () {
+		$http.post('/api/Authentication', {
+			Email: $scope.login,
+			Password: $scope.password
+		}).then(function (response) {
+			console.log(response);
+		},
+		function (error) {
+			console.log(error);
 
+		});
 	};
 });
 
