@@ -30,9 +30,14 @@ namespace MyHackathon.Controllers.api
 
 			HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
 			var stream = new System.IO.FileStream(file.Path, System.IO.FileMode.Open);
-			result.Content = new StreamContent(stream);
+			var buffer = new byte[stream.Length];
+			stream.Read(buffer, 0, (int)stream.Length);
+			stream.Close();
+			var streamResult = new System.IO.MemoryStream(buffer);
+			result.Content = new StreamContent(streamResult);
 			result.Content.Headers.ContentType =
 				new MediaTypeHeaderValue("application/octet-stream");
+			result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
 			result.Content.Headers.ContentDisposition.FileName = file.Name;
 			return result;
 		}
@@ -119,7 +124,7 @@ namespace MyHackathon.Controllers.api
 
 		private	void SaveFile(File file)
 		{
-			var path = @"c:\tmp\code4edu\" + new Guid().ToString();
+			var path = @"c:\Temp\code4edu\" + new Guid().ToString();
 			using (var sw = new System.IO.FileStream(path, System.IO.FileMode.OpenOrCreate))
 			{
 				sw.Write(file.Data, 0, file.Data.Length);
