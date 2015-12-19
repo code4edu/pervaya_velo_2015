@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Security;
 
 namespace MyHackathon.Controllers.api
 {
@@ -17,7 +18,19 @@ namespace MyHackathon.Controllers.api
 				return BadRequest(ModelState);
 			}
 
-			return null;
+			if (LoginModel.CanLogin(model.Email, model.Password))
+			{
+				FormsAuthentication.SetAuthCookie(model.Email, createPersistentCookie: true);
+				return Json(new { isLogged = true });
+			}
+
+			return StatusCode(HttpStatusCode.Forbidden);
+		}
+
+		public IHttpActionResult Delete()
+		{
+				FormsAuthentication.SignOut();
+				return Ok();
 		}
 	}
 }

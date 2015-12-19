@@ -21,7 +21,7 @@ namespace MyHackathon.Models.ClientModels
 		public string Password { get; set; }
 
 		[Required]
-		public Roles role { get; set; }
+		public Roles Role { get; set; }
 
 		public virtual ICollection<User> Professors { get; set; }
 		public virtual ICollection<User> Students { get; set; }

@@ -16,5 +16,14 @@ namespace MyHackathon.Models.ClientModels
 		[Required]
 		public string Password { get; set; }
 
+		// TODO: convert password with MD5
+		public static bool CanLogin(string mail, string password)
+		{
+			using (DBMapper db = new DBMapper())
+			{
+				var user = db.Users.FirstOrDefault(l => l.Mail == mail);
+				return user != null && user.Password == password;
+			}
+		}
 	}
 }
