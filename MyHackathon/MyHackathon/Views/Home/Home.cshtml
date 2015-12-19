@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Топ 10 последних работ</h2>
+
+<table class="table table-hover">
+	<colgroup>
+		<col class="st1" />
+		<col class="st2" />
+		<col class="st3" />
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Дата</th>
+			<th>Тема</th>
+			<th>Автор</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in worksList track by $index">
+			<td>{{item.Date | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+			<td>{{item.Title}}</td>
+			<td>{{item.Author}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,4 +1,10 @@
-﻿body {
+﻿html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -21,4 +27,22 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.container {
+	height: 100%;
+	white-space: nowrap;
+	position: relative;
+}
+
+.container > * {
+	white-space: normal;
+}
+
+.st1 {
+	width: 160px !important;
+}
+
+.cp {
+	cursor: pointer;
 }
